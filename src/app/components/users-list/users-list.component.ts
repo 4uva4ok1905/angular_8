@@ -11,6 +11,7 @@ export class UsersListComponent implements OnInit {
 
   private usersService: UsersService;
   private users: Array<Users> = [];
+  private pActiveUser:Users = null;
 
   constructor(@Inject(UsersService) UsersService) {
     this.usersService = UsersService;
@@ -18,8 +19,12 @@ export class UsersListComponent implements OnInit {
 
   ngOnInit() {
     this.usersService.users.subscribe(users => {
-      console.log(users);
       return this.users = users;
     })
+  }
+
+  activeUser(value: Users) {
+    console.log(value);
+    this.pActiveUser = value;
   }
 }

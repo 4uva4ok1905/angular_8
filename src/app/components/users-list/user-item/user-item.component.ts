@@ -1,4 +1,4 @@
-import {Component, Inject, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
 import {Users} from "../../../data/users/users";
 import {UsersEventsService} from "../../../services/users/users-events.service";
 
@@ -9,23 +9,17 @@ import {UsersEventsService} from "../../../services/users/users-events.service";
 })
 export class UserItemComponent implements OnInit {
 
-  private pActiveUser:Users = null;
-
   constructor(@Inject(UsersEventsService) private userEvents: UsersEventsService ){}
 
   @Input() user:Users;
+  @Input() active:Users;
+  @Output() onActiveUser: EventEmitter<Users> = new EventEmitter();
 
   ngOnInit() {
   }
 
 
-  get activeUser(): Users {
-    return this.pActiveUser;
-  }
-
-  set activeUser(value: Users) {
-    this.userEvents.changeCategory(value);
-    this.pActiveUser = value;
-    console.log(this.activeUser);
+  activeUser() {
+    this.onActiveUser.emit(this.user);
   }
 }
