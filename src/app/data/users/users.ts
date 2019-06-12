@@ -1,7 +1,7 @@
-export class Users{
+export class Users {
 
-  private pId:number;
-  private pName:string;
+  private pId: number;
+  private pName: string;
 
 
   constructor(id: number, name: string) {
@@ -25,7 +25,7 @@ export class Users{
     this.pName = value;
   }
 
-  public static formJson(json:any):Users{
+  public static formJson(json: any): Users {
     return new Users(json.id, json.name);
   }
 }

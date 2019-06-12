@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
-import {Users} from "../../../data/users/users";
-import {UsersEventsService} from "../../../services/users/users-events.service";
+import {Component, Inject, Input, OnInit} from '@angular/core';
+import {Users} from '../../../data/users/users';
+import {UsersEventsService} from '../../../services/users/users-events.service';
 
 @Component({
   selector: 'app-user-item',
@@ -9,17 +9,20 @@ import {UsersEventsService} from "../../../services/users/users-events.service";
 })
 export class UserItemComponent implements OnInit {
 
-  constructor(@Inject(UsersEventsService) private userEvents: UsersEventsService ){}
+  constructor(
+    @Inject(UsersEventsService) private userEvents: UsersEventsService
+  ) {}
 
-  @Input() user:Users;
-  @Input() active:Users;
-  @Output() onActiveUser: EventEmitter<Users> = new EventEmitter();
+  @Input() user: Users;
+  @Input() active: Users;
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  selectUser(user: Users) {
+    this.userEvents.selectUser(user);
   }
 
-
-  activeUser() {
-    this.onActiveUser.emit(this.user);
+  deleteUser(user: Users) {
+    this.userEvents.deleteUser(user);
   }
 }

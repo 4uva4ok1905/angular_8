@@ -8,3 +8,8 @@
   width: 200px;
   background-color: #ccc;
 }
+
+.content{
+  width: calc(100% - 200px);
+  padding: 15px;
+}

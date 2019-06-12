@@ -1,21 +1,40 @@
-import { Injectable } from '@angular/core';
-import {Subject} from "rxjs";
-import {Users} from "../../data/users/users";
+import {Injectable} from '@angular/core';
+import {Subject} from 'rxjs';
+import {Users} from '../../data/users/users';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersEventsService {
 
-  private pChangeCategory:Subject<Users> = new Subject();
+  private pSelectUser: Subject<Users> = new Subject();
+  private pAddUser: Subject<null> = new Subject();
+  private pDeleteUser: Subject<Users> = new Subject();
 
-  constructor() { }
-
-  get changeCategoryMessage() {
-    return this.pChangeCategory;
+  constructor() {
   }
 
-  public changeCategory(user: Users){
-    this.pChangeCategory.next(user);
+  get selectUserMessage() {
+    return this.pSelectUser;
+  }
+
+  public selectUser(user: Users) {
+    this.pSelectUser.next(user);
+  }
+
+  get addUserMessage() {
+    return this.pAddUser;
+  }
+
+  public addUser() {
+    this.pAddUser.next(null);
+  }
+
+  get deleteUserMessage() {
+    return this.pDeleteUser;
+  }
+
+  public deleteUser(user: Users) {
+    this.pDeleteUser.next(user);
   }
 }

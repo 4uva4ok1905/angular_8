@@ -1,10 +1,10 @@
-import {Users} from "./users";
+import {Users} from './users';
 
-export class UserResponse{
+export class UserResponse {
 
-  private pData:Array<Users>;
-  private pStatus:string;
-  private pErrors:string;
+  private pData: Array<Users>;
+  private pStatus: string;
+  private pErrors: string;
 
   constructor(data: Array<Users>, status, errors) {
     this.pData = data;
@@ -36,13 +36,13 @@ export class UserResponse{
     this.pErrors = value;
   }
 
-  public static formJson(json:any): UserResponse{
+  public static formJson(json: any): UserResponse {
     return new UserResponse(
       json.data.map(data => {
         return Users.formJson(data);
       }),
       json.status,
       json.errors
-    )
+    );
   }
 }

@@ -1,11 +1,9 @@
-import {Users} from "../users/users";
+export class Notes {
 
-export class Notes{
-
-  private pId:number;
-  private pName:string;
-  private pDone:boolean;
-  private pDesc:string;
+  private pId: number;
+  private pName: string;
+  private pDone: boolean;
+  private pDesc: string;
 
   constructor(id: number, name: string, done: boolean, desc: string) {
     this.pId = id;
@@ -46,7 +44,7 @@ export class Notes{
     this.pDesc = value;
   }
 
-  public static formJson(json:any):Notes{
+  public static formJson(json: any): Notes {
     return new Notes(json.id, json.name, json.done, json.desc);
   }
 }

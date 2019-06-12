@@ -1,0 +1,11 @@
+<div class="fade" *ngIf="visible" (click)="($event.target === $event.currentTarget) ? visible = !visible : '';">
+  <div class="modal">
+    <div class="modal__header">Add User</div>
+    <div class="modal__body">
+      <input [(ngModel)]="name">
+    </div>
+    <div class="modal__footer">
+      <div class="btn btn-modal" (click)="saveUser()">Add User</div>
+    </div>
+  </div>
+</div>

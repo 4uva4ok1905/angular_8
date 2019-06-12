@@ -1,2 +1,2 @@
-<li [class.active] = "user == active" (click)="activeUser()">{{ user.name }}</li>
+<li [class.active]="user == active"><span (click)="selectUser(user)">{{ user.name }}</span><span (click)="deleteUser(user)">Удалить</span></li>
 

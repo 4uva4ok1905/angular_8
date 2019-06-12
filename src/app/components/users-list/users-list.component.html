@@ -1,3 +1,4 @@
 <ul>
-  <app-user-item *ngFor="let user of users" [user]="user" (onActiveUser)="activeUser($event)"></app-user-item>
+  <app-user-item *ngFor="let user of users" [user]="user" [active]="activeUser"></app-user-item>
 </ul>
+<div (click)="addUser()">Add User</div>

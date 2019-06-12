@@ -1,10 +1,10 @@
-import {Notes} from "./notes";
+import {Notes} from './notes';
 
-export class NotesResponse{
+export class NotesResponse {
 
-  private pData:Array<Notes>;
-  private pStatus:string;
-  private pErrors:string;
+  private pData: Array<Notes>;
+  private pStatus: string;
+  private pErrors: string;
 
   constructor(data: Array<Notes>, status, errors) {
     this.pData = data;
@@ -36,13 +36,13 @@ export class NotesResponse{
     this.pErrors = value;
   }
 
-  public static formJson(json:any): NotesResponse{
+  public static formJson(json: any): NotesResponse {
     return new NotesResponse(
       json.data.map(data => {
         return Notes.formJson(data);
       }),
       json.status,
       json.errors
-    )
+    );
   }
 }

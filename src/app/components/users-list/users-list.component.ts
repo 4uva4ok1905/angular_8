@@ -1,6 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {UsersService} from "../../services/users/users.service";
-import {Users} from "../../data/users/users";
+import {UsersService} from '../../services/users/users.service';
+import {Users} from '../../data/users/users';
+import {UsersEventsService} from '../../services/users/users-events.service';
+import {ModalsEventsService} from '../../services/modals/modals-events.service';
 
 @Component({
   selector: 'app-users',
@@ -9,22 +11,38 @@ import {Users} from "../../data/users/users";
 })
 export class UsersListComponent implements OnInit {
 
-  private usersService: UsersService;
   private users: Array<Users> = [];
-  private pActiveUser:Users = null;
+  private activeUser = null;
 
-  constructor(@Inject(UsersService) UsersService) {
-    this.usersService = UsersService;
+  constructor(
+    @Inject(UsersService) private userService: UsersService,
+    @Inject(UsersEventsService) private userEventService: UsersEventsService,
+    @Inject(ModalsEventsService) private modalsService: ModalsEventsService,
+  ) {
   }
 
   ngOnInit() {
-    this.usersService.users.subscribe(users => {
-      return this.users = users;
-    })
+
+    this.userService.getUsers.subscribe(users => {
+      this.users = users;
+
+      if (users.length > 0) {
+        this.userEventService.selectUser(users[0]);
+      }
+    });
+
+    this.userEventService.selectUserMessage.subscribe(user =>
+      this.activeUser = user
+    );
+
+    this.userEventService.deleteUserMessage.subscribe(user => {
+      this.userService.deleteUser(user).subscribe();
+    });
   }
 
-  activeUser(value: Users) {
-    console.log(value);
-    this.pActiveUser = value;
+  addUser() {
+    this.modalsService.addUser();
   }
+
+
 }

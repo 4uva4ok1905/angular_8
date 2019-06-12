@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {Notes} from '../../data/notes/notes';
+import {UsersEventsService} from '../../services/users/users-events.service';
+import {NotesService} from '../../services/notes/notes.service';
+import {NoteEventsService} from '../../services/notes/notes-events.service';
 
 @Component({
   selector: 'app-notes-list',
@@ -7,9 +11,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotesListComponent implements OnInit {
 
-  constructor() { }
+  private notes: Array<Notes> = [];
 
-  ngOnInit() {
+  constructor(
+    @Inject(NotesService) private noteService: NotesService,
+    @Inject(UsersEventsService) private userEventService: UsersEventsService,
+    @Inject(NoteEventsService) private noteEventService: NoteEventsService
+  ) {
   }
 
+  ngOnInit() {
+
+    this.updateNotes();
+    this.noteEventService.updateNoteMessage.subscribe(resp => {
+      this.updateNotes();
+    });
+  }
+
+  private updateNotes() {
+    this.userEventService.selectUserMessage.subscribe(user => {
+      this.noteService.notes(user).subscribe(note => {
+        this.notes = note;
+      });
+    });
+  }
 }
