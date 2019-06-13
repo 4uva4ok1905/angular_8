@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {Notes} from '../../../data/notes/notes';
+import {NoteEventsService} from '../../../services/notes/notes-events.service';
 
 @Component({
   selector: 'app-note-item',
@@ -10,10 +11,15 @@ export class NoteItemComponent implements OnInit {
 
   @Input() note: Notes;
 
-  constructor() {
+  constructor(
+    @Inject(NoteEventsService) private noteEventService: NoteEventsService
+  ) {
   }
 
   ngOnInit() {
   }
 
+  deleteNote(note: Notes) {
+    this.noteEventService.deleteNote(note);
+  }
 }

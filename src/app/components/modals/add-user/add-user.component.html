@@ -1,11 +1,14 @@
 <div class="fade" *ngIf="visible" (click)="($event.target === $event.currentTarget) ? visible = !visible : '';">
+  <div class="modal-title">Add User 😁</div>
   <div class="modal">
-    <div class="modal__header">Add User</div>
     <div class="modal__body">
-      <input [(ngModel)]="name">
+      <div class="input-group">
+        <label for="user_name">You Name</label>
+        <input [(ngModel)]="name" id="user_name">
+      </div>
     </div>
     <div class="modal__footer">
-      <div class="btn btn-modal" (click)="saveUser()">Add User</div>
+      <div class="btn-big" (click)="saveUser()">Add User</div>
     </div>
   </div>
 </div>

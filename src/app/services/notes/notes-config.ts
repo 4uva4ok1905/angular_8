@@ -9,4 +9,8 @@ export class NotesConfig {
   get addTodoUrl(): string {
     return GlobalConfig.BASE_URL + '?action=todo&method=add';
   }
+
+  get deleteTodoUrl(): string {
+    return GlobalConfig.BASE_URL + '?action=todo&method=delete';
+  }
 }

@@ -31,9 +31,15 @@ export class UsersListComponent implements OnInit {
 
     this.userEventService.deleteUserMessage.subscribe(user => {
       this.userService.deleteUser(user).subscribe(resp => {
-        if (user === this.activeUser) { this.activeUser = null; }
+        if (user === this.activeUser) {
+          this.activeUser = null;
+        }
         this.updateUsersList();
       });
+    });
+
+    this.userEventService.addUserMessage.subscribe(resp => {
+      this.updateUsersList();
     });
   }
 

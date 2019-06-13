@@ -47,4 +47,17 @@ export class NotesService {
 
     return this.http.post(this.config.addTodoUrl, data, options);
   }
+
+  deleteNote(note): Observable<any> {
+
+    const data = 'id=' + note.id;
+
+    const options = {
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded'
+      }
+    };
+
+    return this.http.post(this.config.deleteTodoUrl, data, options);
+  }
 }

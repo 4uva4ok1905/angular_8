@@ -28,6 +28,13 @@ export class NotesListComponent implements OnInit {
     this.noteEventService.updateNoteMessage.subscribe(resp => {
       this.updateNotes();
     });
+
+    this.noteEventService.deleteNoteMessage.subscribe(note => {
+      this.noteService.deleteNote(note).subscribe(resp => {
+
+      });
+    });
+
   }
 
   private updateNotes() {

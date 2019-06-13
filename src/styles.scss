@@ -18,17 +18,30 @@ input, button, textarea {
   height: 100%;
   left: 0;
   top: 0;
-  background-color: #2f2f2f;
-  opacity: 0.75;
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: 4;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-flow: column;
 }
 
 .modal {
-  background-color: #fff;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 30px 15px 30px;
   width: 500px;
+}
+
+.modal-title {
+  color: #fff;
+  font-weight: 800;
+  font-size: 18px;
+  text-transform: uppercase;
 }
 
 .btn-modal {
@@ -52,6 +65,24 @@ input, button, textarea {
 
   &.btn-center {
     margin: 0 auto;
+  }
+}
+
+.btn-big {
+  background: #627DFE;
+  padding: 15px 0;
+  border-radius: 5px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.13);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 10px 0;
+  text-transform: uppercase;
+  color: #fff;
+
+  &:hover {
+    transform: scale(0.95);
   }
 }
 

@@ -1,0 +1,22 @@
+.input-group {
+  display: flex;
+  flex-flow: column;
+
+  label{
+    color: #777;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  input,
+  textarea {
+    border: 0;
+    font-size: 16px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #627DFE
+  }
+}
+
+.btn-big{
+  margin-top: 30px;
+}
