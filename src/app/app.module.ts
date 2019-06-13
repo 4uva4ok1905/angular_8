@@ -11,6 +11,14 @@ import { ModalsComponent } from './components/modals/modals.component';
 import { AddUserComponent } from './components/modals/add-user/add-user.component';
 import {FormsModule} from '@angular/forms';
 import { NotesAddComponent } from './components/notes-list/notes-add/notes-add.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { AddNoteComponent } from './components/modals/add-note/add-note.component';
+
+library.add(fas, far, fab);
 
 @NgModule({
   declarations: [
@@ -21,10 +29,11 @@ import { NotesAddComponent } from './components/notes-list/notes-add/notes-add.c
     UserItemComponent,
     ModalsComponent,
     AddUserComponent,
-    NotesAddComponent
+    NotesAddComponent,
+    AddNoteComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule, FormsModule
+    BrowserModule, HttpClientModule, FormsModule, FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

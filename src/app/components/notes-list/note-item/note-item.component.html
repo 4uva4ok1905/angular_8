@@ -1,4 +1,13 @@
 <div class="note-item">
-  <div class="note-item__name">{{ note.name }}</div>
-  <div class="note-item__description">{{ note.desc }}</div>
+  <div class="note-item__header">
+      <div class="note-item__left-side">
+        <div class="note-item__title"><fa-icon icon="fire-alt"></fa-icon><span>{{ note.name }}</span></div>
+      </div>
+      <div class="note-item__right-side">
+        <span class="btn-mini done"><fa-icon icon="check"></fa-icon></span>
+        <span class="btn-mini edit"><fa-icon icon="pen"></fa-icon></span>
+        <span class="btn-mini remove"><fa-icon icon="trash"></fa-icon></span>
+      </div>
+  </div>
+  <div class="note-item__body">{{ note.desc }}</div>
 </div>

@@ -1,8 +1,37 @@
 .note-item{
-  display: flex;
-  justify-content: space-between;
-  background-color: #ccc;
+  padding: 25px;
   margin-bottom: 15px;
-  flex-flow: column;
-  padding: 15px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+}
+
+.note-item__header{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.note-item__right-side{
+  display: flex;
+  align-items: center;
+}
+
+.note-item__body{
+  color: #999;
+  line-height: 1.5;
+}
+
+.note-item__title{
+  font-size: 18px;
+
+  .ng-fa-icon{
+    color: #F45366;
+    font-size: 16px;
+  }
+
+  span{
+    padding-left: 10px;
+  }
 }

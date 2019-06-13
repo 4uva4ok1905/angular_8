@@ -1,2 +1,2 @@
-<li [class.active]="user == active"><span (click)="selectUser(user)">{{ user.name }}</span><span (click)="deleteUser(user)">Удалить</span></li>
+<li [class.active]="user == active" (click)="selectUser(user)">{{ user.name }}<span class="btn-mini remove" (click)="deleteUser(user, $event)"><fa-icon icon="trash"></fa-icon></span></li>
 

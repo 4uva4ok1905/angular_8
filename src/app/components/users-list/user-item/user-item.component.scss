@@ -1,3 +1,17 @@
-li.active{
-  color:red
+li {
+  padding: 15px;
+  margin-bottom: 15px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+  transition: all 0.2s ease;
+  border: 1px solid #fdfdfd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+
+  &.active {
+    border-color: #627DFE;
+  }
 }

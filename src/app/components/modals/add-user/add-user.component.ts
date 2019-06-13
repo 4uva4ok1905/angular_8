@@ -20,7 +20,7 @@ export class AddUserComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.modalsService.addUserMessage.subscribe(modal => {
+    this.modalsService.modalAddUserMessage.subscribe(modal => {
       this.visible = true;
     });
   }

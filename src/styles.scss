@@ -1,5 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap&subset=cyrillic');
+
 body {
   margin: 0;
+  background: #f2f3f8;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: #2f2f2f;
+}
+
+input, button, textarea {
+  font-family: 'Roboto', sans-serif;
 }
 
 .fade {
@@ -8,7 +18,7 @@ body {
   height: 100%;
   left: 0;
   top: 0;
-  background-color: #222427;
+  background-color: #2f2f2f;
   opacity: 0.75;
   z-index: 4;
   display: flex;
@@ -19,4 +29,58 @@ body {
 .modal {
   background-color: #fff;
   width: 500px;
+}
+
+.btn-modal {
+  width: 60px;
+  height: 60px;
+  background: #627DFE;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.13);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: #fff;
+  position: relative;
+  margin: 10px 0;
+
+  &:hover {
+    transform: scale(0.9);
+  }
+
+  &.btn-center {
+    margin: 0 auto;
+  }
+}
+
+.btn-mini {
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+
+  &.remove:hover {
+    color: #F45366;
+    background: rgba(244, 83, 102, 0.1);
+  }
+
+  &.edit:hover {
+    background: rgba(98, 125, 254, 0.1);
+    color: #627DFE;
+  }
+
+  &.done:hover {
+    color: #00c479;
+    background: rgba(0, 196, 121, 0.1);
+  }
+}
+
+.btn-mini + .btn-mini {
+  margin-left: 10px;
 }

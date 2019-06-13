@@ -10,6 +10,7 @@ export class UsersEventsService {
   private pSelectUser: Subject<Users> = new Subject();
   private pAddUser: Subject<null> = new Subject();
   private pDeleteUser: Subject<Users> = new Subject();
+  private pUpdateUser: Subject<null> = new Subject();
 
   constructor() {
   }
@@ -36,5 +37,13 @@ export class UsersEventsService {
 
   public deleteUser(user: Users) {
     this.pDeleteUser.next(user);
+  }
+
+  get updateUsersMessage() {
+    return this.pUpdateUser;
+  }
+
+  public updateUsers() {
+    this.pUpdateUser.next(null);
   }
 }

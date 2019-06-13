@@ -1,2 +1,2 @@
 <app-note-item *ngFor="let note of notes" [note] = note></app-note-item>
-<app-notes-add></app-notes-add>
+<div (click)="modalAddNote()" class="btn-modal btn-center"><fa-icon icon="plus"></fa-icon></div>

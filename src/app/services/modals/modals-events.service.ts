@@ -7,14 +7,23 @@ import {Subject} from 'rxjs';
 export class ModalsEventsService {
 
   private pAddUser: Subject<null> = new Subject();
+  private pAddNote: Subject<null> = new Subject();
 
   constructor() { }
 
-  get addUserMessage() {
+  get modalAddUserMessage() {
     return this.pAddUser;
   }
 
-  public addUser() {
+  public modalAddUser() {
     this.pAddUser.next(null);
+  }
+
+  get modalAddNoteMessage() {
+    return this.pAddNote;
+  }
+
+  public modalAddNote() {
+    this.pAddNote.next(null);
   }
 }

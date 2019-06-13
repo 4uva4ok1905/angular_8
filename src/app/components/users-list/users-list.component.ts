@@ -13,6 +13,7 @@ export class UsersListComponent implements OnInit {
 
   private users: Array<Users> = [];
   private activeUser = null;
+  private click = false;
 
   constructor(
     @Inject(UsersService) private userService: UsersService,
@@ -22,27 +23,31 @@ export class UsersListComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.userService.getUsers.subscribe(users => {
-      this.users = users;
-
-      if (users.length > 0) {
-        this.userEventService.selectUser(users[0]);
-      }
-    });
+    this.updateUsersList();
 
     this.userEventService.selectUserMessage.subscribe(user =>
       this.activeUser = user
     );
 
     this.userEventService.deleteUserMessage.subscribe(user => {
-      this.userService.deleteUser(user).subscribe();
+      this.userService.deleteUser(user).subscribe(resp => {
+        if (user === this.activeUser) { this.activeUser = null; }
+        this.updateUsersList();
+      });
     });
   }
 
-  addUser() {
-    this.modalsService.addUser();
+  modalAddUser() {
+    this.modalsService.modalAddUser();
   }
 
+  private updateUsersList() {
+    this.userService.getUsers.subscribe(users => {
+      this.users = users;
 
+      if (users.length > 0 && this.activeUser == null) {
+        this.userEventService.selectUser(users[0]);
+      }
+    });
+  }
 }

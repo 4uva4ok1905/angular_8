@@ -22,7 +22,8 @@ export class UserItemComponent implements OnInit {
     this.userEvents.selectUser(user);
   }
 
-  deleteUser(user: Users) {
+  deleteUser(user: Users, e) {
+    e.stopPropagation();
     this.userEvents.deleteUser(user);
   }
 }
