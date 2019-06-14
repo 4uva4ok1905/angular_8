@@ -1,5 +1,5 @@
 <div class="fade" *ngIf="visible" (click)="($event.target === $event.currentTarget) ? visible = !visible : '';">
-  <div class="modal-title">Add User 😁</div>
+  <div class="modal-title">Add User</div>
   <div class="modal">
     <div class="modal__body">
       <div class="input-group">
@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="modal__footer">
-      <div class="btn-big" (click)="saveUser()">Add User</div>
+      <button class="btn-big" (click)="saveUser()">Add User</button>
     </div>
   </div>
 </div>

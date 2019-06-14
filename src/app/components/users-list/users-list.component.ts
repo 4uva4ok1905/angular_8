@@ -9,11 +9,11 @@ import {ModalsEventsService} from '../../services/modals/modals-events.service';
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.scss']
 })
+
 export class UsersListComponent implements OnInit {
 
-  private users: Array<Users> = [];
+  users: Array<Users> = [];
   private activeUser = null;
-  private click = false;
 
   constructor(
     @Inject(UsersService) private userService: UsersService,
@@ -23,23 +23,14 @@ export class UsersListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.updateUsersList();
+    this.updateUsers();
 
     this.userEventService.selectUserMessage.subscribe(user =>
       this.activeUser = user
     );
 
-    this.userEventService.deleteUserMessage.subscribe(user => {
-      this.userService.deleteUser(user).subscribe(resp => {
-        if (user === this.activeUser) {
-          this.activeUser = null;
-        }
-        this.updateUsersList();
-      });
-    });
-
-    this.userEventService.addUserMessage.subscribe(resp => {
-      this.updateUsersList();
+    this.userEventService.updateUsersMessage.subscribe(resp => {
+      this.updateUsers();
     });
   }
 
@@ -47,11 +38,11 @@ export class UsersListComponent implements OnInit {
     this.modalsService.modalAddUser();
   }
 
-  private updateUsersList() {
+  private updateUsers() {
     this.userService.getUsers.subscribe(users => {
       this.users = users;
 
-      if (users.length > 0 && this.activeUser == null) {
+      if (users.length) {
         this.userEventService.selectUser(users[0]);
       }
     });

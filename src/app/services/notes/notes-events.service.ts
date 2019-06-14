@@ -9,7 +9,6 @@ import {Notes} from '../../data/notes/notes';
 export class NoteEventsService {
 
   private pUpdateNote: Subject<null> = new Subject();
-  private pDeleteNote: Subject<Notes> = new Subject();
 
   constructor() {
   }
@@ -20,13 +19,5 @@ export class NoteEventsService {
 
   public updateNote() {
     this.pUpdateNote.next(null);
-  }
-
-  get deleteNoteMessage() {
-    return this.pDeleteNote;
-  }
-
-  public deleteNote(note: Notes) {
-    this.pDeleteNote.next(note);
   }
 }

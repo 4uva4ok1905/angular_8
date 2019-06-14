@@ -1,0 +1,9 @@
+<div class="fade" *ngIf="visible" (click)="($event.target === $event.currentTarget) ? visible = !visible : '';">
+  <div class="modal-title">Are you sure?</div>
+  <div class="modal">
+    <div class="modal__footer">
+      <div class="btn-big" (click)="deleteUser()">Delete User</div>
+      <div class="btn-big bg-grey" (click)="($event.target === $event.currentTarget) ? visible = !visible : '';">Cancel</div>
+    </div>
+  </div>
+</div>

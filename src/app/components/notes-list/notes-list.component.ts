@@ -10,9 +10,11 @@ import {ModalsEventsService} from '../../services/modals/modals-events.service';
   templateUrl: './notes-list.component.html',
   styleUrls: ['./notes-list.component.scss']
 })
+
 export class NotesListComponent implements OnInit {
 
-  private notes: Array<Notes> = [];
+  notes: Array<Notes> = [];
+  private user = null;
 
   constructor(
     @Inject(NotesService) private noteService: NotesService,
@@ -23,26 +25,22 @@ export class NotesListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userEventService.selectUserMessage.subscribe(user => {
+      this.user = user;
+      this.noteEventService.updateNote();
+    });
 
-    this.updateNotes();
-    this.noteEventService.updateNoteMessage.subscribe(resp => {
+    this.noteEventService.updateNoteMessage.subscribe(note => {
       this.updateNotes();
     });
-
-    this.noteEventService.deleteNoteMessage.subscribe(note => {
-      this.noteService.deleteNote(note).subscribe(resp => {
-
-      });
-    });
-
   }
 
   private updateNotes() {
-    this.userEventService.selectUserMessage.subscribe(user => {
-      this.noteService.notes(user).subscribe(note => {
+    if (this.user != null) {
+      this.noteService.notes(this.user).subscribe(note => {
         this.notes = note;
       });
-    });
+    }
   }
 
   modalAddNote() {

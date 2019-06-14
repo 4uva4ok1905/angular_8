@@ -1,5 +1,18 @@
 <div class="fade" *ngIf="visible" (click)="($event.target === $event.currentTarget) ? visible = !visible : '';">
+  <div class="modal-title">Add Note</div>
   <div class="modal">
-    Add Note
+    <div class="modal__body">
+      <div class="input-group">
+        <label for="user_name">Name</label>
+        <input [(ngModel)]="name" id="user_name">
+      </div>
+      <div class="input-group">
+        <label for="user_desc">Description</label>
+        <textarea [(ngModel)]="desc" id="user_desc"></textarea>
+      </div>
+    </div>
+    <div class="modal__footer">
+      <div class="btn-big" (click)="addNote()">Add Note</div>
+    </div>
   </div>
 </div>

@@ -27,7 +27,7 @@ export class AddUserComponent implements OnInit {
 
   saveUser() {
     this.userService.addUser(this.name).subscribe(resp => {
-      this.userEventService.addUser();
+      this.userEventService.updateUsers();
       this.visible = false;
       this.name = '';
     });

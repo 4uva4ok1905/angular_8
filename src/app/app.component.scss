@@ -35,3 +35,15 @@
   width: calc(100% - 200px);
   padding: 15px;
 }
+
+@media (max-width: 776px) {
+
+  .container {
+    flex-flow: column;
+  }
+
+  .sidebar,
+  .content {
+    width: calc(100% - 30px);
+  }
+}
